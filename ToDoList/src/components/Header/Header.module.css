@@ -1,0 +1,15 @@
+.header{
+    background: var(--gray-700);
+    display: flex;
+    justify-content: center;
+    height: 12.5rem;
+    padding: 0;
+}
+
+.header img{
+    position: absolute;
+    width: 7.87rem;
+    height: 3rem;
+    top: 4.5rem;
+    background: transparent;
+}
