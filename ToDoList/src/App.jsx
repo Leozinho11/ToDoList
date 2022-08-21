@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './App.module.css'
 import {PlusCircle} from 'phosphor-react'
 import { Header } from './components/Header/Header'
+import { Task } from './components/Task/Task';
 
  export function App() {
 
@@ -26,6 +27,8 @@ import { Header } from './components/Header/Header'
             <PlusCircle size={20}/>
         </button>
       </form>
+
+      <Task />
 
     </div>
   )
