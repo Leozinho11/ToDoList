@@ -1,5 +1,6 @@
 import styles from './Task.module.css';
 import { v4 as uuidv4 } from 'uuid'
+import { Cards } from '../TasksCards/Cards';
 
 export function Task() {
 
@@ -25,9 +26,8 @@ export function Task() {
             </header>
 
             <div className={styles.taskBox}>
-
                 <div className={styles.taskContent}>
-
+                    <Cards />
                 </div>
 
             </div>

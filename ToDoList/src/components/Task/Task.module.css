@@ -14,19 +14,18 @@
 .taskInfo{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: flex-end;
+    gap: 27.5rem;
     padding: 0;
     width: 46rem;
     height: 1rem;
-    align-self: stretch;
+    position: absolute;
 }
 
 .createdTasksLabel{
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0;
     gap: 8px;
     width: 8.5rem;
     height: 1rem;
@@ -36,6 +35,7 @@
     font-size: 1rem;
     line-height: 1rem;
     color: var(--blue);
+    position: relative;
 }
 
 .completedTasksLabel{
@@ -52,6 +52,7 @@
     font-size: 1rem;
     line-height: 1rem;
     color: var(--purple);
+    position: relative;
 }
 
 .createdTasksCounter{
@@ -67,6 +68,7 @@
     background: var(--gray-400);
     color: var(--gray-200);
     border-radius: 999px;
+    position: relative;
 }
 
 .completedTasksCounter{
@@ -82,19 +84,24 @@
     background: var(--gray-400);
     color: var(--gray-200);
     border-radius: 999px;
+    position: relative;
 }
 
 .taskBox{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0;
+    padding: 1rem 0;
     gap: 1.5rem;
 
     position: absolute;
     width: 46rem;
     height: 18rem;
     left: calc(50% - 23rem);
-    top: 1.5rem;
+    top: 2.5rem;
     border-top: 1px solid var(--gray-400);
+}
+
+.taskContent{
+    gap: 1rem;
 }
