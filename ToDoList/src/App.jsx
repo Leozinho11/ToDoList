@@ -1,16 +1,15 @@
 import styles from './App.module.css'
-import { useState } from 'react'
 import { Header } from './components/Header/Header'
-import { v4 as uuidv4 } from 'uuid'
-import { Cards } from '../TasksCards/Cards';
-import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import {Cards} from './components/TasksCards/Cards';
 import { PlusCircle } from 'phosphor-react';
+import { useState } from 'react';
 
 const task = [
   {
-      id: uuidv4(),
-      content: '',
-      isChecked: false
+    id: uuidv4(),
+    content: '',
+    isChecked: false
   }
 ]
 
@@ -26,11 +25,11 @@ function handleCreateNewTask(){
 
 function handleTaskContentChange(){
   setNewTaskContent(event.target.value);
-} 
+}
 
-function deleteTask(taskToDelete){
+function deleteTask(){
   const tasksWithoutDeletedOne = tasks.filter(task => {
-      return task !== taskToDelete
+    return task !== taskToDelete
   })
   setTasks(tasksWithoutDeletedOne);
 }
@@ -41,7 +40,7 @@ function deleteTask(taskToDelete){
     <div className="App">
       <Header />
         <div>
-            <form className={styles.form} onSubmit={handleNewTask}>
+            <form className={styles.form} onSubmit={handleCreateNewTask}>
                 <input 
                 type="text" 
                 placeholder='Adicione uma nova tarefa' 
@@ -67,16 +66,16 @@ function deleteTask(taskToDelete){
 
                  <div className={styles.taskBox}>
                     <div className={styles.taskContent}>
-                        {task.map (tasks =>{
-                            return(
-                                <Cards 
-                                key={tasks.id}
-                                content={tasks.content}
-                                isChecked={tasks.isChecked}
-                                onDeleteTask={deleteTask}
-                                />
-                            )
-                        })}
+                      {task.map (tasks => {
+                        return (
+                          <Cards 
+                          key={tasks.id}
+                          content={tasks.content}
+                          isChecked={tasks.isChecked}
+                          onDeleteTask={deleteTask}
+                          />
+                        )
+                      })}
                     </div>
                  </div>
             </div>
