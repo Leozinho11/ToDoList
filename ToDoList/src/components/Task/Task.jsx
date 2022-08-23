@@ -28,6 +28,10 @@ export function Task() {
             <div className={styles.taskBox}>
                 <div className={styles.taskContent}>
                     <Cards />
+                    <Cards />
+                    <Cards />
+                    <Cards />
+                    <Cards />
                 </div>
 
             </div>
