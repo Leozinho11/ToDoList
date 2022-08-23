@@ -8,13 +8,13 @@ import { useState } from 'react';
 const task = [
   {
     id: uuidv4(),
-    content: '',
+    content: 'Algo',
     isChecked: false
   }
 ]
 
 const [tasks, setTasks] = useState([]);
-const [newTaskContent, setNewTaskContent] = useState('');
+const [newTaskContent, setNewTaskContent] = useState('vjvyvyv');
 
 function handleCreateNewTask(){
   event.preventDefault()
@@ -43,7 +43,8 @@ function deleteTask(){
             <form className={styles.form} onSubmit={handleCreateNewTask}>
                 <input 
                 type="text" 
-                placeholder='Adicione uma nova tarefa' 
+                placeholder='Adicione uma nova tarefa'
+                onChange={handleTaskContentChange} 
                 />
 
                 <button type='submit'>
