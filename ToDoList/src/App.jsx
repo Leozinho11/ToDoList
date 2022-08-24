@@ -5,14 +5,22 @@ import {Cards} from './components/TasksCards/Cards';
 import { PlusCircle } from 'phosphor-react';
 import { useState } from 'react';
 
+
 const task = [
   {
     id: uuidv4(),
     content: '',
     isChecked: false
+  },
+  {
+    id: uuidv4(),
+    content: 'Outra coisa'
   }
 ]
 
+
+
+ export function App() {
 const [tasks, setTasks] = useState([]);
 const [newTaskContent, setNewTaskContent] = useState('');
 
@@ -33,8 +41,6 @@ function deleteTask(){
   })
   setTasks(tasksWithoutDeletedOne);
 }
-
- export function App() {
 
   return (
     <div className="App">
@@ -66,20 +72,12 @@ function deleteTask(){
 
                  <div className={styles.taskBox}>
                     <div className={styles.taskContent}>
-                      {task.map (tasks => {
-                        return (
-                          <Cards 
-                          key={tasks.id}
-                          content={tasks.content}
-                          isChecked={tasks.isChecked}
-                          onDeleteTask={deleteTask}
-                          />
-                        )
-                      })}
                     </div>
                  </div>
             </div>
         </div>
     </div>
+
+    
   )
 }
