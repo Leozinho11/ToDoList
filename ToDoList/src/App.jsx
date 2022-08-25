@@ -8,15 +8,12 @@ import { useState } from 'react';
 
 
 
-
-
-
 export function App() {
 
   
 
 const [tasks, setTasks] = useState([]);
-const [newTaskContent, setNewTaskContent] = useState('');
+const [newTaskContent, setNewTaskContent] = useState('vjvyvyv');
 
 
 function handleCreateNewTask(){
@@ -48,6 +45,7 @@ function deleteTask(taskToDelete){
                 placeholder='Adicione uma nova tarefa'
                 onChange={handleTaskContentChange} 
                 required
+
                 />
 
                 <button type='submit'>
