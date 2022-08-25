@@ -1,55 +1,53 @@
-import styles from './App.module.css'
-import { Header } from './components/Header/Header'
-import { v4 as uuidv4 } from 'uuid';
+import styles from './App.module.css';
+import { v4 as uuidv4 } from 'uuid'
+import { Header } from './components/Header/Header';
 import {Cards} from './components/TasksCards/Cards';
 import { PlusCircle } from 'phosphor-react';
 import { useState } from 'react';
 
 
-const task = [
-  {
-    id: uuidv4(),
-    content: '',
-    isChecked: false
-  },
-  {
-    id: uuidv4(),
-    content: 'Outra coisa'
-  }
-]
 
 
 
- export function App() {
+
+
+export function App() {
+
+  
+
 const [tasks, setTasks] = useState([]);
 const [newTaskContent, setNewTaskContent] = useState('');
 
+
 function handleCreateNewTask(){
   event.preventDefault()
-
   setTasks([...tasks, newTaskContent]);
-  setNewTaskContent('');
+  setNewTaskContent('')
 }
 
 function handleTaskContentChange(){
   setNewTaskContent(event.target.value);
 }
 
-function deleteTask(){
+function deleteTask(taskToDelete){
   const tasksWithoutDeletedOne = tasks.filter(task => {
-    return task !== taskToDelete
+    return task !== taskToDelete; 
   })
-  setTasks(tasksWithoutDeletedOne);
+  setTasks(tasksWithoutDeletedOne)
 }
 
   return (
     <div className="App">
       <Header />
         <div>
-            <form className={styles.form} onSubmit={handleCreateNewTask}>
+            <form className={styles.form} onSubmit={handleCreateNewTask} autoComplete="off">
                 <input 
+                name='task'
                 type="text" 
-                placeholder='Adicione uma nova tarefa' 
+                value={newTaskContent}
+                placeholder='Adicione uma nova tarefa'
+                onChange={handleTaskContentChange} 
+                required
                 />
 
                 <button type='submit'>
@@ -72,6 +70,15 @@ function deleteTask(){
 
                  <div className={styles.taskBox}>
                     <div className={styles.taskContent}>
+                  {tasks.map (task => {
+                    return(
+                    <Cards
+                    key={uuidv4}
+                    content={task}
+                    deleteTask={deleteTask}
+                    />
+                    )
+                  })}
                     </div>
                  </div>
             </div>

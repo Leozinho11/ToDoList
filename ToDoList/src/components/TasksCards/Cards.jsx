@@ -1,11 +1,13 @@
 import styles from './Cards.module.css';
+import { v4 as uuidv4 } from 'uuid'
 import { Trash } from 'phosphor-react';
 
 
-export function Cards (content = '', onDeleteTask, key) {
+export function Cards ({content, deleteTask, key = uuidv4()}) {
 
-  function handleDeleteTask (){
-    onDeleteTask(content);
+  function handleDeleteTask(){
+
+    deleteTask(key)
   }
   
 
@@ -14,7 +16,7 @@ export function Cards (content = '', onDeleteTask, key) {
           <div className={styles.cardsContent}>
             <input type="checkbox" id={key} />
             <label htmlFor={key}>{content}</label>
-            <button onClick={handleDeleteTask}>
+            <button onClick={handleDeleteTask} title='Deletar task'>
               <Trash size={24} />
             </button>
           </div>
