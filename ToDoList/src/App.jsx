@@ -10,10 +10,13 @@ import { useState } from 'react';
 
 export function App() {
 
-  
 
 const [tasks, setTasks] = useState([]);
-const [newTaskContent, setNewTaskContent] = useState('vjvyvyv');
+const [newTaskContent, setNewTaskContent] = useState('');
+const cardKey = uuidv4()
+
+const isNewTaskContentEmpty = newTaskContent.length===0;
+
 
 
 function handleCreateNewTask(){
@@ -48,7 +51,7 @@ function deleteTask(taskToDelete){
 
                 />
 
-                <button type='submit'>
+                <button type='submit' disabled={isNewTaskContentEmpty} >
                      Criar 
                      <PlusCircle size={20}/>
                 </button>
@@ -71,12 +74,13 @@ function deleteTask(taskToDelete){
                   {tasks.map (task => {
                     return(
                     <Cards
-                    key={uuidv4}
+                    id={cardKey}
                     content={task}
                     deleteTask={deleteTask}
                     />
                     )
                   })}
+                  {tasks.filter}
                     </div>
                  </div>
             </div>
