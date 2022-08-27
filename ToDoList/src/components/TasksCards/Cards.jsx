@@ -3,22 +3,19 @@ import { v4 as uuidv4 } from 'uuid'
 import { Trash } from 'phosphor-react';
 
 
-export function Cards ({content, deleteTask, key = uuidv4(), isChecked}) {
+export function Cards ({content, deleteTask, key = uuidv4()}) {
 
   function handleDeleteTask(){
 
     deleteTask(content)
   }
 
-  function changeCheck(){
-    console.log(isChecked)
-    }
   
 
     return (
         <div className={styles.cards}>
           <div className={styles.cardsContent}>
-            <input type="checkbox" onClick={changeCheck} value={isChecked} id={key} />
+            <input type="checkbox" id={key} />
             <label htmlFor={key}>{content}</label>
             <button onClick={handleDeleteTask} title='Deletar task'>
               <Trash size={24} />

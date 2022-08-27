@@ -2,7 +2,7 @@ import styles from './App.module.css';
 import { v4 as uuidv4 } from 'uuid'
 import { Header } from './components/Header/Header';
 import {Cards} from './components/TasksCards/Cards';
-import { PlusCircle } from 'phosphor-react';
+import { PlusCircle, ClipboardText } from 'phosphor-react';
 import { useState } from 'react';
 
 
@@ -16,7 +16,10 @@ const [newTaskContent, setNewTaskContent] = useState('');
 const cardKey = uuidv4()
 
 const isNewTaskContentEmpty = newTaskContent.length===0;
+const taskCount = tasks.length;
 
+const countTaskFinished = tasks.filter(task => task.finished).length
+console.log(countTaskFinished)
 
 
 function handleCreateNewTask(){
@@ -35,6 +38,7 @@ function deleteTask(taskToDelete){
   })
   setTasks(tasksWithoutDeletedOne)
 }
+
 
   return (
     <div className="App">
@@ -61,7 +65,7 @@ function deleteTask(taskToDelete){
 
                 <header className={styles.taskInfo}>
                     <p className={styles.createdTasksLabel}>
-                    Tarefas Criadas <span className={styles.createdTasksCounter}>5</span>
+                    Tarefas Criadas <span className={styles.createdTasksCounter}>{taskCount}</span>
                     </p>
 
                      <p className={styles.completedTasksLabel}>
@@ -71,16 +75,21 @@ function deleteTask(taskToDelete){
 
                  <div className={styles.taskBox}>
                     <div className={styles.taskContent}>
-                  {tasks.map (task => {
-                    return(
-                    <Cards
-                    id={cardKey}
-                    content={task}
-                    deleteTask={deleteTask}
-                    />
-                    )
-                  })}
-                  {tasks.filter}
+                     
+                      <div className={taskCount == 0 ? styles.taskNull : styles.taskNullHidden}>
+                        <ClipboardText size={100} />
+                        <strong>Você não tem tarefas!</strong>
+                        <p>Crie tarefas e organize seus itens a fazer</p>
+                      </div>
+
+                      {tasks.map (task => {
+                        return(
+                          <Cards
+                          id={cardKey}
+                          content={task}
+                          deleteTask={deleteTask}
+                          />
+                        )})}
                     </div>
                  </div>
             </div>
