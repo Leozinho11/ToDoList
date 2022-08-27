@@ -13,13 +13,14 @@ export function App() {
 
 const [tasks, setTasks] = useState([]);
 const [newTaskContent, setNewTaskContent] = useState('');
-const cardKey = uuidv4()
+let [checkedTasksCounter, setCheckedTasksCounter] = useState(0)
+
 
 const isNewTaskContentEmpty = newTaskContent.length===0;
-const taskCount = tasks.length;
 
-const countTaskFinished = tasks.filter(task => task.finished).length
-console.log(countTaskFinished)
+const taskCount = tasks.length
+
+
 
 
 function handleCreateNewTask(){
@@ -39,18 +40,21 @@ function deleteTask(taskToDelete){
   setTasks(tasksWithoutDeletedOne)
 }
 
-
-  const check = document.getElementsByName('check');
-  for (let i=0; i<check.length;i++){
-    if (check[i].checked == true) {
-     check.length
-  } else {
-     console.log(check.length)
-  }
-  }
-  
-
-
+function countChecked(isChecked = 0, num = 0, setNum = 0){
+ const check = document.getElementsByName('check');
+    
+      for(let i=0; i<check.length;i++){
+      if(check[i].checked == true){
+        isChecked = check[i].id
+        isChecked = num + 1
+        console.log(isChecked)
+      }
+      else{
+        isChecked = num + 0
+      }
+}
+ setCheckedTasksCounter([isChecked])
+}
 
 
 
@@ -84,7 +88,7 @@ function deleteTask(taskToDelete){
                     </p>
 
                      <p className={styles.completedTasksLabel}>
-                    Concluídas<span className={styles.completedTasksCounter}>{`${check.length} de ${taskCount}`}</span>
+                    Concluídas<span className={styles.completedTasksCounter}>{`${checkedTasksCounter} de ${taskCount}`}</span>
                     </p>
                 </header>
 
@@ -100,10 +104,9 @@ function deleteTask(taskToDelete){
                       {tasks.map (task => {
                         return(
                           <Cards
-                          id={cardKey}
                           content={task}
                           deleteTask={deleteTask}
-                          isChecked={check}
+                          isChecked={countChecked}
                           />
                         )})}
                     </div>

@@ -3,23 +3,18 @@ import { v4 as uuidv4 } from 'uuid'
 import { Trash } from 'phosphor-react';
 
 
-export function Cards ({content, deleteTask, key = uuidv4()}) {
+export function Cards ({content, deleteTask, key = uuidv4(), isChecked}) {
 
   function handleDeleteTask(){
 
     deleteTask(content)
   }
+
+  function handleIsChecked(){
+    countChecked(isChecked)
+  }
   
-  function isChecked(isChecked){
-    const check = document.getElementsByName('check');
-  for (let i=0; i<check.length;i++){
-    if (check[i].checked == true) {
-      isChecked = check.length
-  } else {
-     console.log(isChecked = false)
-  }
-  }
-  }
+
   
 
   
@@ -27,7 +22,7 @@ export function Cards ({content, deleteTask, key = uuidv4()}) {
     return (
         <div className={styles.cards}>
           <div className={styles.cardsContent}>
-            <input type="checkbox" id={key} name='check' onClick={isChecked}/>
+            <input type="checkbox"readOnly id={key} name='check' onClick={isChecked}/>
             <label htmlFor={key}>{content}</label>
             <button onClick={handleDeleteTask} title='Deletar task'>
               <Trash size={24} />
