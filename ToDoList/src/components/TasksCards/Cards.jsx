@@ -9,13 +9,25 @@ export function Cards ({content, deleteTask, key = uuidv4()}) {
 
     deleteTask(content)
   }
+  
+  function isChecked(isChecked){
+    const check = document.getElementsByName('check');
+  for (let i=0; i<check.length;i++){
+    if (check[i].checked == true) {
+      isChecked = check.length
+  } else {
+     console.log(isChecked = false)
+  }
+  }
+  }
+  
 
   
 
     return (
         <div className={styles.cards}>
           <div className={styles.cardsContent}>
-            <input type="checkbox" id={key} />
+            <input type="checkbox" id={key} name='check' onClick={isChecked}/>
             <label htmlFor={key}>{content}</label>
             <button onClick={handleDeleteTask} title='Deletar task'>
               <Trash size={24} />
