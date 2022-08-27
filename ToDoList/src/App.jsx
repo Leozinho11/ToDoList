@@ -40,6 +40,21 @@ function deleteTask(taskToDelete){
 }
 
 
+  const check = document.getElementsByName('check');
+  for (let i=0; i<check.length;i++){
+    if (check[i].checked == true) {
+     check.length
+  } else {
+     console.log(check.length)
+  }
+  }
+  
+
+
+
+
+
+
   return (
     <div className="App">
       <Header />
@@ -69,7 +84,7 @@ function deleteTask(taskToDelete){
                     </p>
 
                      <p className={styles.completedTasksLabel}>
-                    Concluídas<span className={styles.completedTasksCounter}>2 de 5</span>
+                    Concluídas<span className={styles.completedTasksCounter}>{`${check.length} de ${taskCount}`}</span>
                     </p>
                 </header>
 
@@ -88,6 +103,7 @@ function deleteTask(taskToDelete){
                           id={cardKey}
                           content={task}
                           deleteTask={deleteTask}
+                          isChecked={check}
                           />
                         )})}
                     </div>
